@@ -1,10 +1,31 @@
+name: Auto Update Playlist
+
+on:
+  push:
+    paths:
+      - 'songs/**'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
       - name: Install ffmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
       
       - name: Generate playlist.json
         run: |
           python3 << 'PYTHON'
-          import os, json, urllib.parse, subprocess
+          import os
+          import json
+          import urllib.parse
+          import subprocess
 
           songs_dir = "songs"
           playlist = []
@@ -19,25 +40,29 @@
               try:
                   result = subprocess.run([
                       "ffprobe", "-v", "error", "-show_entries", 
-                      "format=duration", "-of", "default=noprint_wrappers=1:nokey=1",
+                      "format=duration", "-of", 
+                      "default=noprint_wrappers=1:nokey=1",
                       filepath
                   ], capture_output=True, text=True, timeout=10)
                   duration_sec = float(result.stdout.strip())
                   mins = int(duration_sec // 60)
                   secs = int(duration_sec % 60)
                   duration = str(mins) + ":" + (str(secs) if secs >= 10 else "0" + str(secs))
-              except:
+              except Exception as e:
+                  print("Failed to get duration for " + filename + ": " + str(e))
                   duration = "0:00"
               
-              name = filename[:-4]
+              # 解析歌手和歌名
+              name = filename[:-4]  # 去掉 .mp3
               if " - " in name:
                   parts = name.split(" - ", 1)
-                  artist = parts[0]
-                  title = parts[1]
+                  artist = parts[0].strip()
+                  title = parts[1].strip()
               else:
-                  title = name
+                  title = name.strip()
                   artist = "未知歌手"
               
+              # URL 编码
               urlfile = urllib.parse.quote(filename)
               
               playlist.append({
@@ -50,3 +75,10 @@
           with open("playlist.json", "w", encoding="utf-8") as f:
               json.dump(playlist, f, ensure_ascii=False, indent=2)
           PYTHON
+      
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add playlist.json
+          git diff --cached --quiet || (git commit -m "Auto-update playlist with duration" && git push)
