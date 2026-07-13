@@ -366,20 +366,15 @@
         // }
         
    // 从 JSON 文件加载歌单
-let playlist = [];
-
 async function loadPlaylist() {
     try {
-        const response = await fetch('playlist.json');
+        const response = await fetch('playlist.json?t=' + Date.now());
         playlist = await response.json();
         init();
     } catch (err) {
-        console.error('加载歌单失败:', err);
-        document.getElementById('status').textContent = '加载歌单失败';
+        console.error('加载失败:', err);
     }
 }
-
-// 页面加载时自动读取
 loadPlaylist();
             // 示例（上传后替换为真实地址）：
             // {
