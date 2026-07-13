@@ -1,0 +1,58 @@
+name: Auto Update Playlist
+
+on:
+  push:
+    paths:
+      - 'songs/**'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate playlist.json
+        run: |
+          echo '[' > playlist.json
+          first=true
+          for file in songs/*.mp3; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              
+              # 提取歌手和歌名
+              if [[ "$filename" =~ ^(.+)[[:space:]]-[[:space:]](.+)\.mp3$ ]]; then
+                artist="${BASH_REMATCH[1]}"
+                title="${BASH_REMATCH[2]}"
+              else
+                title="${filename%.mp3}"
+                artist="未知歌手"
+              fi
+              
+              # URL 编码
+              urlfile=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$filename'))")
+              
+              if [ "$first" = true ]; then
+                first=false
+              else
+                echo ',' >> playlist.json
+              fi
+              
+              cat >> playlist.json << EOF
+          {
+            "title": "$title",
+            "artist": "$artist",
+            "url": "https://ljh1795.github.io/music-player/songs/$urlfile",
+            "duration": "0:00"
+          }
+          EOF
+            fi
+          done
+          echo '' >> playlist.json
+          echo ']' >> playlist.json
+
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add playlist.json
+          git diff --cached --quiet || (git commit -m "Auto-update playlist" && git push)
