@@ -8,8 +8,13 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Generate playlist.json
         run: |
@@ -29,7 +34,7 @@ jobs:
               fi
               
               # URL 编码
-              urlfile=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$filename'))")
+              urlfile=$(python3 -c "import urllib.parse; print(urllib.parse.quote(\"$filename\"))")
               
               if [ "$first" = true ]; then
                 first=false
@@ -49,10 +54,11 @@ jobs:
           done
           echo '' >> playlist.json
           echo ']' >> playlist.json
-
+      
       - name: Commit and push
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add playlist.json
-          git diff --cached --quiet || (git commit -m "Auto-update playlist" && git push)
+          git diff --cached --quiet || git commit -m "Auto-update playlist"
+          git push
