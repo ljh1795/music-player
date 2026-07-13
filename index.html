@@ -114,7 +114,7 @@
 
             <div class="mode-buttons">
                 <button class="mode-btn active" data-mode="sequence" title="顺序播放">&#128257; 顺序</button>
-                <button class="mode-btn" data-mode="loop" title="单曲循环">&#128258; 循环</button>
+                <button class="mode-btn" data-mode="loop" title="列表循环">&#128258; 列表循环</button>
                 <button class="mode-btn" data-mode="random" title="随机播放">&#128256; 随机</button>
             </div>
         </div>
@@ -295,13 +295,15 @@
             playSong(currentIndex);
         }
 
+        // 列表循环：播完自动下一首，到最后一首后回到第一首
         function handleEnded() {
             if (playMode === 'loop') {
-                audio.currentTime = 0;
-                play();
+                // 列表循环模式
+                nextSong();
             } else if (playMode === 'random') {
                 playRandom();
             } else {
+                // 顺序播放：播完最后一首停止
                 if (currentIndex < playlist.length - 1) {
                     nextSong();
                 } else {
