@@ -1,51 +1,44 @@
 [
-{
-  "title": "T.R.A.P",
-  "artist": "DJ Raisei",
-  "url": "https://ljh1795.github.io/music-player/songs/DJ%20Raisei%20-%20T.R.A.P.mp3",
-  "duration": "0:00"
-}
-,
-{
-  "title": "Viyella's Tears",
-  "artist": "Laur",
-  "url": "https://ljh1795.github.io/music-player/songs/Laur%20-%20Viyella%27s%20Tears.mp3",
-  "duration": "0:00"
-}
-,
-{
-  "title": "Tic! Tac! Toe! (Extended Ver.)",
-  "artist": "TAK,Corbin",
-  "url": "https://ljh1795.github.io/music-player/songs/TAK%2CCorbin%20-%20Tic%21%20Tac%21%20Toe%21%20%28Extended%20Ver.%29.mp3",
-  "duration": "0:00"
-}
-,
-{
-  "title": "MIRA",
-  "artist": "kanaria,小春六花",
-  "url": "https://ljh1795.github.io/music-player/songs/kanaria%2C%E5%B0%8F%E6%98%A5%E5%85%AD%E8%8A%B1%20-%20MIRA.mp3",
-  "duration": "0:00"
-}
-,
-{
-  "title": "Maboroshi",
-  "artist": "かめりあ",
-  "url": "https://ljh1795.github.io/music-player/songs/%E3%81%8B%E3%82%81%E3%82%8A%E3%81%82%20-%20Maboroshi.mp3",
-  "duration": "0:00"
-}
-,
-{
-  "title": "命テステス",
-  "artist": "ぱりぱりさらうどん,重音テト",
-  "url": "https://ljh1795.github.io/music-player/songs/%E3%81%B1%E3%82%8A%E3%81%B1%E3%82%8A%E3%81%95%E3%82%89%E3%81%86%E3%81%A9%E3%82%93%2C%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%20-%20%E5%91%BD%E3%83%86%E3%82%B9%E3%83%86%E3%82%B9.mp3",
-  "duration": "0:00"
-}
-,
-{
-  "title": "Little Wish",
-  "artist": "塞壬唱片-MSR,WS MUSIC",
-  "url": "https://ljh1795.github.io/music-player/songs/%E5%A1%9E%E5%A3%AC%E5%94%B1%E7%89%87-MSR%2CWS%20MUSIC%20-%20Little%20Wish.mp3",
-  "duration": "0:00"
-}
-
+  {
+    "title": "T.R.A.P",
+    "artist": "DJ Raisei",
+    "url": "https://ljh1795.github.io/music-player/songs/DJ%20Raisei%20-%20T.R.A.P.mp3",
+    "duration": "2:03"
+  },
+  {
+    "title": "Viyella's Tears",
+    "artist": "Laur",
+    "url": "https://ljh1795.github.io/music-player/songs/Laur%20-%20Viyella%27s%20Tears.mp3",
+    "duration": "2:39"
+  },
+  {
+    "title": "Tic! Tac! Toe! (Extended Ver.)",
+    "artist": "TAK Corbin",
+    "url": "https://ljh1795.github.io/music-player/songs/TAK%20Corbin%20-%20Tic%21%20Tac%21%20Toe%21%20%28Extended%20Ver.%29.mp3",
+    "duration": "0:00"
+  },
+  {
+    "title": "MIRA",
+    "artist": "kanaria,小春六花",
+    "url": "https://ljh1795.github.io/music-player/songs/kanaria%2C%E5%B0%8F%E6%98%A5%E5%85%AD%E8%8A%B1%20-%20MIRA.mp3",
+    "duration": "2:16"
+  },
+  {
+    "title": "Maboroshi",
+    "artist": "かめりあ",
+    "url": "https://ljh1795.github.io/music-player/songs/%E3%81%8B%E3%82%81%E3%82%8A%E3%81%82%20-%20Maboroshi.mp3",
+    "duration": "2:56"
+  },
+  {
+    "title": "命テステス",
+    "artist": "ぱりぱりさらうどん,重音テト",
+    "url": "https://ljh1795.github.io/music-player/songs/%E3%81%B1%E3%82%8A%E3%81%B1%E3%82%8A%E3%81%95%E3%82%89%E3%81%86%E3%81%A9%E3%82%93%2C%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%20-%20%E5%91%BD%E3%83%86%E3%82%B9%E3%83%86%E3%82%B9.mp3",
+    "duration": "1:47"
+  },
+  {
+    "title": "Little Wish",
+    "artist": "塞壬唱片-MSR,WS MUSIC",
+    "url": "https://ljh1795.github.io/music-player/songs/%E5%A1%9E%E5%A3%AC%E5%94%B1%E7%89%87-MSR%2CWS%20MUSIC%20-%20Little%20Wish.mp3",
+    "duration": "4:00"
+  }
 ]
