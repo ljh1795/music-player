@@ -6,6 +6,12 @@
     "duration": "2:03"
   },
   {
+    "title": "緋纏いの宵(feat.妃苺)",
+    "artist": "Freezer,妃苺",
+    "url": "https://ljh1795.github.io/music-player/songs/Freezer%2C%E5%A6%83%E8%8B%BA%20-%20%E7%B7%8B%E7%BA%8F%E3%81%84%E3%81%AE%E5%AE%B5%28feat.%E5%A6%83%E8%8B%BA%29.mp3",
+    "duration": "2:08"
+  },
+  {
     "title": "Viyella's Tears",
     "artist": "Laur",
     "url": "https://ljh1795.github.io/music-player/songs/Laur%20-%20Viyella%27s%20Tears.mp3",
@@ -40,5 +46,11 @@
     "artist": "塞壬唱片-MSR,WS MUSIC",
     "url": "https://ljh1795.github.io/music-player/songs/%E5%A1%9E%E5%A3%AC%E5%94%B1%E7%89%87-MSR%2CWS%20MUSIC%20-%20Little%20Wish.mp3",
     "duration": "4:00"
+  },
+  {
+    "title": "And Revive The Melody",
+    "artist": "黒魔",
+    "url": "https://ljh1795.github.io/music-player/songs/%E9%BB%92%E9%AD%94%20-%20And%20Revive%20The%20Melody.mp3",
+    "duration": "2:51"
   }
 ]
