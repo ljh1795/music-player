@@ -16,49 +16,61 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Install mutagen
+        run: pip install mutagen
+      
       - name: Generate playlist.json
         run: |
-          echo '[' > playlist.json
-          first=true
-          for file in songs/*.mp3; do
-            if [ -f "$file" ]; then
-              filename=$(basename "$file")
+          python3 << 'PYTHON'
+          import os
+          import json
+          import urllib.parse
+          from mutagen.mp3 import MP3
+
+          songs_dir = "songs"
+          playlist = []
+
+          for filename in sorted(os.listdir(songs_dir)):
+              if not filename.endswith(".mp3"):
+                  continue
               
-              # 提取歌手和歌名
-              if [[ "$filename" =~ ^(.+)[[:space:]]-[[:space:]](.+)\.mp3$ ]]; then
-                artist="${BASH_REMATCH[1]}"
-                title="${BASH_REMATCH[2]}"
-              else
-                title="${filename%.mp3}"
-                artist="未知歌手"
-              fi
+              filepath = os.path.join(songs_dir, filename)
+              
+              # 获取时长
+              try:
+                  audio = MP3(filepath)
+                  duration_sec = int(audio.info.length)
+                  mins = duration_sec // 60
+                  secs = duration_sec % 60
+                  duration = f"{mins}:{secs:02d}"
+              except:
+                  duration = "0:00"
+              
+              # 解析歌手和歌名
+              name = filename[:-4]  # 去掉 .mp3
+              if " - " in name:
+                  artist, title = name.split(" - ", 1)
+              else:
+                  title = name
+                  artist = "未知歌手"
               
               # URL 编码
-              urlfile=$(python3 -c "import urllib.parse; print(urllib.parse.quote(\"$filename\"))")
+              urlfile = urllib.parse.quote(filename)
               
-              if [ "$first" = true ]; then
-                first=false
-              else
-                echo ',' >> playlist.json
-              fi
-              
-              cat >> playlist.json << EOF
-          {
-            "title": "$title",
-            "artist": "$artist",
-            "url": "https://ljh1795.github.io/music-player/songs/$urlfile",
-            "duration": "0:00"
-          }
-          EOF
-            fi
-          done
-          echo '' >> playlist.json
-          echo ']' >> playlist.json
+              playlist.append({
+                  "title": title,
+                  "artist": artist,
+                  "url": f"https://ljh1795.github.io/music-player/songs/{urlfile}",
+                  "duration": duration
+              })
+
+          with open("playlist.json", "w", encoding="utf-8") as f:
+              json.dump(playlist, f, ensure_ascii=False, indent=2)
+          PYTHON
       
       - name: Commit and push
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add playlist.json
-          git diff --cached --quiet || git commit -m "Auto-update playlist"
-          git push
+          git diff --cached --quiet || (git commit -m "Auto-update playlist with duration" && git push)
