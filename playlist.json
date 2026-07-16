@@ -1,5 +1,11 @@
 [
   {
+    "title": "Heaven Knows",
+    "artist": "B'z",
+    "url": "https://ljh1795.github.io/music-player/songs/B%27z%20-%20Heaven%20Knows.mp3",
+    "duration": "3:08"
+  },
+  {
     "title": "T.R.A.P",
     "artist": "DJ Raisei",
     "url": "https://ljh1795.github.io/music-player/songs/DJ%20Raisei%20-%20T.R.A.P.mp3",
@@ -12,6 +18,18 @@
     "duration": "2:08"
   },
   {
+    "title": "Hello",
+    "artist": "Furui Riho",
+    "url": "https://ljh1795.github.io/music-player/songs/Furui%20Riho%20-%20Hello.mp3",
+    "duration": "3:52"
+  },
+  {
+    "title": "ハンドサイン",
+    "artist": "Kizuna AI",
+    "url": "https://ljh1795.github.io/music-player/songs/Kizuna%20AI%20-%20%E3%83%8F%E3%83%B3%E3%83%89%E3%82%B5%E3%82%A4%E3%83%B3.mp3",
+    "duration": "3:58"
+  },
+  {
     "title": "Viyella's Tears",
     "artist": "Laur",
     "url": "https://ljh1795.github.io/music-player/songs/Laur%20-%20Viyella%27s%20Tears.mp3",
@@ -22,6 +40,12 @@
     "artist": "TAK,Corbin",
     "url": "https://ljh1795.github.io/music-player/songs/TAK%2CCorbin%20-%20Tic%21%20Tac%21%20Toe%21%20%28Extended%20Ver.%29.mp3",
     "duration": "3:27"
+  },
+  {
+    "title": "臙脂 ft. 重音テト",
+    "artist": "bk,重音テト",
+    "url": "https://ljh1795.github.io/music-player/songs/bk%2C%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%20-%20%E8%87%99%E8%84%82%20ft.%20%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88.mp3",
+    "duration": "2:40"
   },
   {
     "title": "MIRA",
